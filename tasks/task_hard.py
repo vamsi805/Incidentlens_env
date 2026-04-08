@@ -30,6 +30,8 @@ TASK_DESCRIPTION = (
     "over the past hour. No clear error spike. p99 latency gradually climbing from 200ms "
     "to 2000ms. Some users reporting slow search results. Investigate the root cause."
 )
+MIN_SCORE = 0.01
+MAX_SCORE = 0.99
 
 GROUND_TRUTH = {
     "root_cause": "memory_leak_cache_layer",
@@ -216,5 +218,5 @@ def grade(diagnosis: Dict[str, Any], ground_truth: Dict[str, Any]) -> Dict[str, 
         + 0.10 * scores["time_score"]
         + 0.10 * scores["description_score"]
     )
-    scores["total"] = round(min(1.0, total), 4)
+    scores["total"] = round(max(MIN_SCORE, min(MAX_SCORE, total)), 4)
     return scores

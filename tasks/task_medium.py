@@ -26,6 +26,8 @@ TASK_DESCRIPTION = (
     "order-service, payment-service, and queue-worker all reporting failures. "
     "api-gateway latency p99 spiked to 15s. Investigate and identify the root cause."
 )
+MIN_SCORE = 0.01
+MAX_SCORE = 0.99
 
 GROUND_TRUTH = {
     "root_cause": "connection_pool_exhaustion",  # db connection pool
@@ -230,5 +232,5 @@ def grade(diagnosis: Dict[str, Any], ground_truth: Dict[str, Any]) -> Dict[str, 
         + 0.10 * scores["time_score"]
         + 0.10 * scores["description_score"]
     )
-    scores["total"] = round(min(1.0, total), 4)
+    scores["total"] = round(max(MIN_SCORE, min(MAX_SCORE, total)), 4)
     return scores

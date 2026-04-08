@@ -27,6 +27,8 @@ TASK_DESCRIPTION = (
     "Multiple 5xx errors reported by api-gateway for /api/v1/orders endpoints. "
     "Investigate the logs to determine: what failed, why, and severity."
 )
+MIN_SCORE = 0.01
+MAX_SCORE = 0.99
 
 # Ground truth for grading
 GROUND_TRUTH = {
@@ -199,5 +201,5 @@ def grade(diagnosis: Dict[str, Any], ground_truth: Dict[str, Any]) -> Dict[str, 
         + 0.10 * scores["time_score"]
         + 0.10 * scores["description_score"]
     )
-    scores["total"] = round(min(1.0, total), 4)
+    scores["total"] = round(max(MIN_SCORE, min(MAX_SCORE, total)), 4)
     return scores
