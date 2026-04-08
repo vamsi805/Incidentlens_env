@@ -28,6 +28,19 @@ app = create_app(
 )
 
 
+@app.get("/", tags=["Metadata"])
+def root():
+    """Friendly root endpoint for Space previews and manual checks."""
+    return {
+        "name": "incidentlens_env",
+        "status": "ok",
+        "message": "IncidentLens OpenEnv environment is running.",
+        "docs": "/docs",
+        "health": "/health",
+        "schema": "/schema",
+    }
+
+
 def main(host: str = "0.0.0.0", port: int = 8000):
     """Entry point for direct execution via uv run server or python -m."""
     import uvicorn
