@@ -104,12 +104,12 @@ Observed scores:
 
 | Task ID | Score | Steps |
 |---------|-------|-------|
-| `single_service_oom` | `0.96` | `8` |
-| `cascading_db_failure` | `1.00` | `8` |
-| `subtle_memory_leak` | `0.83` | `7` |
+| `single_service_oom` | `0.99` | `6` |
+| `cascading_db_failure` | `0.93` | `8` |
+| `subtle_memory_leak` | `0.83` | `6` |
 
-Average score: `0.93`  
-Total runtime: `120.1s`
+Average score: `0.92`  
+Total runtime: `100.4s`
 
 ## API
 
