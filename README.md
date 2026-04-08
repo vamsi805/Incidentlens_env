@@ -92,7 +92,24 @@ python3 inference.py
 
 ## Baseline Scores
 
-`inference.py` writes reproducible per-task results to `baseline_results.json` for the configured `MODEL_NAME`, `API_BASE_URL`, and seed set (`42` for all tasks). The exact scores are not checked into this repo because they depend on the model endpoint you run against; generate them before submission and paste the resulting scores here.
+`inference.py` writes reproducible per-task results to `baseline_results.json` for the configured `MODEL_NAME`, `API_BASE_URL`, and seed set (`42` for all tasks).
+
+Baseline run used:
+
+- `MODEL_NAME=Qwen/Qwen2.5-72B-Instruct`
+- `API_BASE_URL=https://router.huggingface.co/v1`
+- `ENV_BASE_URL=https://vamsi805-incidentlens-env.hf.space`
+
+Observed scores:
+
+| Task ID | Score | Steps |
+|---------|-------|-------|
+| `single_service_oom` | `0.96` | `8` |
+| `cascading_db_failure` | `1.00` | `8` |
+| `subtle_memory_leak` | `0.83` | `7` |
+
+Average score: `0.93`  
+Total runtime: `120.1s`
 
 ## API
 
